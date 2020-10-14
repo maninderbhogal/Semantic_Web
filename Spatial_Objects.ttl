@@ -4,12 +4,13 @@
 @prefix dublin core: <http://dublincore.org/documents/dcmi-terms/>.
 @prefix event: <http://motools.sourceforge.net/event/event.html>.
 @prefix time: <https://www.w3.org/TR/owl-time/>.
+@prefix dbo: <http://dbpedia.org/ontology/>
 
 @prefix local: <https://inf8410.com/tp/astronomical-object/>.
 
 local:Galaxies
     rdf:type rdfs:Class;
-    local:ourGalaxy _:n1;
+    local:ourGalaxy local:MilkyWay;
     local:isMadeOf :GalaxiesComponents.
 
 local:ourGalaxy
@@ -19,15 +20,13 @@ local:ourGalaxy
     rdfs:domain local:Galaxy;
     rdfs:range local:fundamentalUnitsOfUniverseStructure.
 
-local:Galaxy
-    rdf:type rdfs:Class.
+
+local:MultiplanetarySystems
+    rdf:type rdfs:Class
 
 local:fundamentalUnitsOfUniverseStructure
     rdf:type rdfs:Class.
 
-_:n1
-    local:name "Milky Way";
-    local:containsOur :SolarSystem.
 
 local:isMadeOf
     rdf:type rdf:Property;
@@ -39,8 +38,8 @@ local:isMadeOf
 local:Matter
     rdf:type rdfs:Class.
 
-local:KnowMatter
-    rdf:type rdfs:Class.
+local:KnownMatter
+    rdf:subClassOf local:Matter.
 
 local:GalaxiesComponents
     rdf:type rdf:Bag;
@@ -64,6 +63,10 @@ local:isDefinedBy
 local:Definition
     rdf:type rdfs:Class.
 
+local:Distance
+    rdf:type rdf:Property
+    rdfs:comments "Distance from Earth, in light year"
+
 local:KnownPhysics
     rdf:type rdfs:Class.
 
@@ -72,6 +75,14 @@ _:n2
     rdf:_1 :SpacetimeRegion;
     rdf:_2 :Gravity.
 
-local:MultiplanetarySystems
-    rdf:type rdfs:Class
-    rdf:
+local:MilkyWay
+    rdfs:type dbo:Galaxy;
+    local:name "Milky Way";
+    local:containsOur local:SolarSystem;
+
+local:SolarSystem
+    local:hasStar local:Sun;
+    local:ApparentMagnitude "-26.74"^^xsd:decimal;
+    local:ConfirmedPlanets "8"^^xsd:integer;
+    local:Distance "1.6E-5"^^xsd:double;
+    local:Mass 1.0.
