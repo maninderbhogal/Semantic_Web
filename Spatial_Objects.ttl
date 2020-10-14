@@ -1,0 +1,77 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix foaf: <http://xmlns.com/foaf/spec/>.
+@prefix schema: <https://schema.org/docs/schemas.html>.
+@prefix dublin core: <http://dublincore.org/documents/dcmi-terms/>.
+@prefix event: <http://motools.sourceforge.net/event/event.html>.
+@prefix time: <https://www.w3.org/TR/owl-time/>.
+
+@prefix local: <https://inf8410.com/tp/astronomical-object/>.
+
+local:Galaxies
+    rdf:type rdfs:Class;
+    local:ourGalaxy _:n1;
+    local:isMadeOf :GalaxiesComponents.
+
+local:ourGalaxy
+    rdf:type rdf:Property;
+    rdfs:subPropertyOf local:UniverseElements;
+    rdfs:comment "Contains our solar system";
+    rdfs:domain local:Galaxy;
+    rdfs:range local:fundamentalUnitsOfUniverseStructure.
+
+local:Galaxy
+    rdf:type rdfs:Class.
+
+local:fundamentalUnitsOfUniverseStructure
+    rdf:type rdfs:Class.
+
+_:n1
+    local:name "Milky Way";
+    local:containsOur :SolarSystem.
+
+local:isMadeOf
+    rdf:type rdf:Property;
+    rdfs:subPropertyOf local:UniverseElements;
+    rdfs:comment "Elements that compose a galaxy";
+    rdfs:domain local:Matter;
+    rdfs:range local:KnownMatter.
+
+local:Matter
+    rdf:type rdfs:Class.
+
+local:KnowMatter
+    rdf:type rdfs:Class.
+
+local:GalaxiesComponents
+    rdf:type rdf:Bag;
+    rdf:_1 :Stars;
+    rdf:_2 :InterstellarGas;
+    rdf:_3 :Dust;
+    rdf:_4 :Emptiness;
+    rdf:_5 :DarkMatter.
+
+local:BlackHoles
+    rdf:type local:Class;
+    local:isDefinedBy _:n2.
+
+local:isDefinedBy
+    rdf:type rdf:Property;
+    rdfs:subPropertyOf local:Description;
+    rdfs:comment "Elements that describe a BlackHole";
+    rdfs:domain local:Definition;
+    rdfs:range local:KnownPhysics.
+
+local:Definition
+    rdf:type rdfs:Class.
+
+local:KnownPhysics
+    rdf:type rdfs:Class.
+
+_:n2
+    rdf:type rdf:Bag;
+    rdf:_1 :SpacetimeRegion;
+    rdf:_2 :Gravity.
+
+local:MultiplanetarySystems
+    rdf:type rdfs:Class
+    rdf:
