@@ -86,3 +86,14 @@ local:SolarSystem
     local:ConfirmedPlanets "8"^^xsd:integer;
     local:Distance "1.6E-5"^^xsd:double;
     local:Mass 1.0.
+    local:hasPlanets [
+        a rdf:Seq;
+        rdf:_1 :Mercury;
+        rdf:_2 :Venus;
+        rdf:_3 :Earth;
+        rdf:_4 :Mars;
+        rdf:_5 :Jupiter;
+        rdf:_6 :Saturn;
+        rdf:_7 :Uranus;
+        rdf:_8 :Neptune
+     ].
